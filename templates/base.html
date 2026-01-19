@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- =========================
+       Meta
+       ========================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    {% block title %}
+      Радюк Е.А. — врач-невролог
+    {% endblock %}
+  </title>
+
+  <!-- =========================
+       Fonts
+       ========================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- =========================
+       Base styles (GLOBAL)
+       ========================= -->
+  <link
+    rel="stylesheet"
+    href="{% static 'css/base.css' %}"
+  >
+
+  <!-- =========================
+       Page specific styles
+       ========================= -->
+  {% block extra_css %}{% endblock %}
+
+  <!-- =========================
+       Extra head (meta, scripts)
+       ========================= -->
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+<!-- =========================
+     Header
+     ========================= -->
+<header class="header" role="banner">
+  <div class="container header-inner">
+
+    <!-- Logo -->
+    <div class="logo" aria-label="Информация о враче">
+      <div class="logo-name">Радюк Е.А.</div>
+      <div class="logo-sub">врач-невролог</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav-menu" class="nav" role="navigation" aria-label="Основное меню">
+      <a href="{% url 'home' %}">Главная</a>
+      <a href="{% url 'about' %}">О враче</a>
+      <a href="{% url 'blog:post_list' %}">Статьи</a>
+      <a href="{% url 'contact' %}">Контакты</a>
+    </nav>
+
+    <!-- Hamburger for mobile -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <a href="{% url 'contact' %}" class="btn-primary">
+        Записаться
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- =========================
+     Main content
+     ========================= -->
+<main role="main">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- =========================
+     Footer
+     ========================= -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+
+    <div>
+      <strong>Радюк Елена Александровна</strong><br>
+      Врач-невролог — приём взрослых
+    </div>
+
+    <div class="footer-muted">
+      © {% now "Y" %}
+    </div>
+
+  </div>
+</footer>
+
+<!-- =========================
+     JS для гамбургера
+     ========================= -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+    navToggle.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>

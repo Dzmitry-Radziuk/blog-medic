@@ -1,0 +1,429 @@
+/* =================================================
+   HERO
+   ================================================= */
+.hero {
+  background: var(--primary-light);
+  padding: 80px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-secondary {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 18px rgba(31, 58, 95, 0.14);
+}
+
+.hero-actions .btn-primary:hover,
+.hero-actions .btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.hero-photo img {
+  width: 100%;
+  border-radius: 18px;
+  max-height: 420px;
+  object-fit: cover;
+  box-shadow: 0 14px 34px rgba(31, 58, 95, 0.12);
+}
+
+/* =================================================
+   SERVICES
+   ================================================= */
+.services {
+  background: #f9f9f9;
+  padding: 100px 0;
+}
+
+.services-grid {
+  display: grid;
+  gap: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.service-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 16px 40px rgba(31, 58, 95, 0.08);
+}
+
+.service-card img {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  object-fit: contain;
+}
+
+.service-card h3 {
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.service-card p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* =================================================
+   EDUCATION & COURSES
+   ================================================= */
+.education-list,
+.courses-list {
+  display: grid;
+  row-gap: 16px;
+  margin: 20px 0;
+}
+
+.education-item,
+.course-item {
+  display: flex;
+  gap: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  position: relative;
+}
+
+.education-item strong,
+.course-item strong {
+  width: 80px;
+  color: var(--primary);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* =================================================
+   CONTACT & MAP
+   ================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.contact-card,
+.map-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px 32px;
+  box-shadow: 0 16px 40px rgba(31, 58, 95, 0.08);
+}
+
+.map-wrapper {
+  height: 360px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* =================================================
+   BLOG GRID + IMAGES
+   ================================================= */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 48px;
+}
+
+.blog-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  background: #eef1f5;
+}
+
+/* =================================================
+   ARTICLE
+   ================================================= */
+.article-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+.article-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 12px 28px rgba(31, 58, 95, 0.06);
+}
+
+/* =================================================
+   PAGINATION — PREMIUM (SENIOR)
+   ================================================= */
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+
+.pagination-wrapper a,
+.pagination-wrapper span {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 10px;
+  text-decoration: none;
+
+  background: #fff;
+  color: var(--text-muted);
+
+  border: 1px solid rgba(31, 58, 95, 0.14);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pagination-wrapper a:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: rgba(31, 58, 95, 0.3);
+}
+
+.pagination-wrapper .current,
+.pagination-wrapper span.current {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  font-weight: 600;
+  cursor: default;
+}
+
+.pagination-wrapper span:not(.current) {
+  background: transparent;
+  border-color: transparent;
+  color: rgba(31, 58, 95, 0.35);
+}
+
+/* =================================================
+   RELATED / READ ALSO — SIDEBAR
+   ================================================= */
+.related {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 14px 34px rgba(31, 58, 95, 0.08);
+}
+
+.related h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--primary);
+}
+
+.related-list {
+  display: grid;
+  gap: 16px;
+}
+
+.related-item {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f6f8fb;
+}
+
+.related-image {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+
+.related-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.related-name {
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--primary);
+}
+
+/* =================================================
+   RESPONSIVE
+   ================================================= */
+@media (max-width: 900px) {
+  .services-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 56px 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .pagination-wrapper a,
+  .pagination-wrapper span {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+/* =================================================
+   DOCTOR PAGE — ONLY OVERRIDES
+   ================================================= */
+
+/* hero */
+.doctor-page .hero-photo {
+  display: flex;
+  justify-content: center;
+}
+
+/* content */
+.doctor-page .doctor-content {
+  padding: 80px 0;
+}
+
+.doctor-page .doctor-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 16px 40px rgba(31, 58, 95, 0.08);
+}
+
+.doctor-page .doctor-name {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+
+.doctor-page .doctor-description {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* sections */
+.doctor-page .doctor-section {
+  margin-top: 40px;
+}
+
+.doctor-page .doctor-section h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+/* timeline */
+.doctor-page .education-item,
+.doctor-page .course-item {
+  padding-left: 16px;
+  border-left: 3px solid var(--primary-light);
+}
+
+.doctor-page .education-item strong,
+.doctor-page .course-item strong {
+  position: relative;
+  padding-right: 20px;
+}
+
+.doctor-page .education-item strong::after,
+.doctor-page .course-item strong::after {
+  content: "—";
+  position: absolute;
+  right: 4px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .doctor-page .doctor-card {
+    padding: 32px 24px;
+  }
+
+  .doctor-page .hero-photo img {
+    max-width: 220px;
+    max-height: 260px;
+  }
+
+  .doctor-page .education-item strong::after,
+  .doctor-page .course-item strong::after {
+    display: none;
+  }
+}

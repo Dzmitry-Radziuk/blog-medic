@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+О враче — Радюк
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="doctor-page">
+
+  <!-- =========================
+       HERO
+       ========================= -->
+  <section class="hero doctor-hero" aria-label="О враче">
+    <div class="container hero-grid doctor-hero-grid">
+
+      <div class="hero-text">
+        <h1>О враче</h1>
+        <p class="hero-subtitle">
+          Врач-невролог первой категории.<br>
+          Клиническая практика с 1994 года, доказательный подход
+          и аккуратное ведение пациента.
+        </p>
+      </div>
+
+      <div class="hero-photo">
+        <img
+          src="{% static 'images/doctor.jpg' %}"
+          alt="Радюк Елена Александровна — врач-невролог"
+          loading="lazy"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================
+       DOCTOR CONTENT
+       ========================= -->
+  <section class="doctor-content" aria-label="Информация о враче">
+    <div class="container">
+
+      <article class="doctor-card">
+
+        <h2 class="doctor-name">Радюк Елена Александровна</h2>
+
+        <p class="doctor-description">
+          Врач-невролог первой категории. Основные направления практики —
+          сосудистая неврология, хронические болевые синдромы,
+          ведение пациентов с неврологическими нарушениями и реабилитация.
+        </p>
+
+        <!-- =========================
+             EDUCATION
+             ========================= -->
+        <section class="doctor-section">
+          <h3>Образование</h3>
+
+          <div class="education-list">
+            {% for item in education %}
+              <div class="education-item">
+                <strong>{{ item.year }}</strong>
+                <span>{{ item.desc }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <!-- =========================
+             COURSES
+             ========================= -->
+        <section class="doctor-section">
+          <h3>Повышение квалификации</h3>
+
+          <div class="courses-list">
+            {% for course in courses %}
+              <div class="course-item">
+                <strong>{{ course.year }}</strong>
+                <span>{{ course.desc }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+
+      </article>
+
+    </div>
+  </section>
+
+</div>
+{% endblock %}
