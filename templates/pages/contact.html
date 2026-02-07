@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     Hero
+     ========================= -->
+<section class="hero" aria-label="Контакты и запись">
+  <div class="container hero-grid">
+
+    <div class="hero-text">
+      <h1>Контакты и запись</h1>
+
+      <p class="hero-subtitle">
+        Свяжитесь с нами для записи на консультацию или уточнения информации.<br>
+        Мы поможем вам с планированием визита.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          href="https://horizont-med.by/onlajn-zapis/"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary"
+        >
+          Записаться
+        </a>
+
+        <a href="{% url 'about' %}" class="btn-secondary">
+          О враче
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img
+        src="{% static 'images/contact.png' %}"
+        alt="Контакты медицинского центра"
+      >
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     Contact info
+     ========================= -->
+<section aria-label="Контактная информация">
+  <div class="container">
+
+    <div class="contact-grid">
+
+      <!-- Контакты -->
+      <div class="contact-card">
+        <h3>Наши контакты</h3>
+
+        <div class="contact-block">
+          <div class="contact-label">Телефоны для записи:</div>
+          <p>+375 (29) 761-58-68</p>
+          <p>+375 (29) 116-85-00</p>
+          <p>+375 (17) 270-73-70</p>
+          <p>+375 (17) 270-74-70</p>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-label">Адрес:</div>
+          <p>
+            220029, Республика Беларусь,<br>
+            г. Минск, ул. Киселёва, д. 12
+          </p>
+        </div>
+
+        <div class="contact-block contact-muted">
+          <p>
+            <strong>График работы:</strong><br>
+            Пн–Пт 08:00–21:00<br>
+            Сб 09:00–15:00
+          </p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="contact-block">
+          <div class="contact-label">Электронная почта врача:</div>
+          <a href="mailto:doctor@example.com">
+            doctor@example.com
+          </a>
+        </div>
+
+        <p class="contact-note">
+          Электронная почта предназначена для общих и организационных вопросов.
+          Запись на приём и оказание медицинской помощи осуществляются
+          исключительно через медицинский центр.
+        </p>
+      </div>
+
+      <!-- Карта -->
+      <div class="map-card">
+        <h3>Как добраться</h3>
+
+        <div class="map-wrapper">
+          <iframe
+            src="https://maps.google.com/maps?q=Минск,+улица+Киселёва,+12&z=16&output=embed"
+            title="Карта проезда — Медицинский центр Горизонт"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <p class="contact-note">
+          Медицинский центр расположен на ул. Киселёва, 12 (Минск).
+          Рядом станции метро и остановки общественного транспорта.
+          По вопросам навигации — звоните по номеру записи.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

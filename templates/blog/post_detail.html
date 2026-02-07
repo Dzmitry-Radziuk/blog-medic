@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ post.title }} — Блог
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     Hero
+     ========================= -->
+<section class="hero" aria-label="Статья: {{ post.title }}">
+  <div class="container hero-grid">
+
+    <div class="hero-text">
+      <h1>{{ post.title }}</h1>
+      <p class="hero-subtitle">{{ post.created_at|date:"d M Y" }}</p>
+
+      <div class="hero-actions">
+        <a href="{% url 'contact' %}" class="btn-primary">Записаться</a>
+        <a href="{% url 'about' %}" class="btn-secondary">О враче</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+      {% else %}
+        <img src="{% static 'images/blog-hero.png' %}" alt="{{ post.title }}">
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     Article + Sidebar
+     ========================= -->
+<section>
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- Основная статья -->
+      <main class="article-main">
+        <article class="article-card">
+          <div class="article-body">
+            {{ post.content|safe }}
+          </div>
+        </article>
+      </main>
+
+      <!-- Боковая панель: Related posts -->
+      <aside class="article-side">
+        <div class="related">
+          <h3 class="section-title">Читайте также</h3>
+
+          <div class="related-list">
+            {% for related_post in related_posts|default:recent_posts %}
+              <a href="{{ related_post.get_absolute_url }}" class="related-item">
+                <div class="related-image">
+                  {% if related_post.image %}
+                    <img src="{{ related_post.image.url }}" alt="{{ related_post.title }}">
+                  {% else %}
+                    <img src="{% static 'images/blog-hero.png' %}" alt="{{ related_post.title }}">
+                  {% endif %}
+                </div>
+                <div class="related-content">
+                  <div class="related-name">{{ related_post.title }}</div>
+                  <div class="related-date">{{ related_post.created_at|date:"d M Y" }}</div>
+                </div>
+              </a>
+            {% empty %}
+              <p class="contact-muted">Нет других статей.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

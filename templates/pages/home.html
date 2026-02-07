@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Радюк — врач-невролог
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     Hero
+     ========================= -->
+<section class="hero" aria-label="Главный экран">
+  <div class="container hero-grid">
+
+    <div class="hero-text">
+      <h1>Радюк Елена Александровна</h1>
+
+      <p class="hero-subtitle">
+        Врач-невролог первой категории.<br>
+        Приём взрослых. Клиническая практика с 1994 года.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{% url 'contact' %}" class="btn-primary">
+          Записаться
+        </a>
+        <a href="{% url 'about' %}" class="btn-secondary">
+          О враче
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img
+        src="{% static 'images/doctor.jpg' %}"
+        alt="Радюк Елена Александровна — врач-невролог"
+      >
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     Services
+     ========================= -->
+<section class="services" aria-label="Услуги и специализация">
+  <div class="container">
+
+    <h2 class="section-title">
+      Услуги и специализация
+    </h2>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <img src="{% static 'images/female-doctor-icon.svg' %}" alt="" aria-hidden="true">
+
+        <h3>Консультация невролога</h3>
+
+        <p>
+          Клинический осмотр, анализ жалоб и формирование индивидуального плана лечения.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <img src="{% static 'images/diagnostic.svg' %}" alt="" aria-hidden="true">
+
+        <h3>Диагностика</h3>
+
+        <p>
+          Комплексная оценка неврологического статуса
+          с интерпретацией всех обследований.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <img src="{% static 'images/wheelchair.svg' %}" alt="" aria-hidden="true">
+
+        <h3>Профилактика заболеваний</h3>
+
+        <p>
+          Поддержка здоровья и предотвращение неврологических осложнений с индивидуальными рекомендациями
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     Blog preview
+     ========================= -->
+{% if recent_posts %}
+<section class="blog-preview" aria-label="Последние статьи">
+  <div class="container">
+
+    <h2 class="section-title">
+      Последние статьи
+    </h2>
+
+    <div class="blog-grid">
+      {% for post in recent_posts %}
+        <a href="{{ post.get_absolute_url }}" class="blog-card">
+
+          {% if post.image %}
+            <div class="blog-card-image">
+              <img
+                src="{{ post.image.url }}"
+                alt="{{ post.title }}"
+              >
+            </div>
+          {% endif %}
+
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">
+              {{ post.title }}
+            </h3>
+
+            <p class="blog-card-preview">
+              {{ post.preview|truncatewords:25 }}
+            </p>
+
+            <span class="blog-card-link">
+              Читать →
+            </span>
+          </div>
+
+        </a>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+О враче — Радюк
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     Hero
+     ========================= -->
+<section class="hero" aria-label="О враче">
+  <div class="container hero-grid">
+
+    <div class="hero-text">
+      <h1>О враче</h1>
+      <p class="hero-subtitle">
+        Врач-невролог первой категории.<br>
+        Клиническая практика с 1994 года, доказательный подход
+        и аккуратное ведение пациента.
+      </p>
+    </div>
+
+    <div class="hero-photo">
+      <img
+        src="{% static 'images/doctor.jpg' %}"
+        alt="Радюк Елена Александровна"
+      >
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     About content
+     ========================= -->
+<section class="services" aria-label="Информация о враче">
+  <div class="container services-grid">
+
+    <!-- Основная информация -->
+    <div class="service-card">
+
+      <h3>Радюк Елена Александровна</h3>
+
+      <p>
+        Врач-невролог первой категории. Основные направления практики —
+        сосудистая неврология, хронические болевые синдромы,
+        ведение пациентов с неврологическими нарушениями и реабилитация.
+      </p>
+
+      <!-- Образование -->
+      <h3>Образование</h3>
+      <div class="education-list">
+        {% for item in education %}
+          <div class="education-item">
+            <strong>{{ item.year }}</strong>—
+            <span class="edu-desc">{{ item.desc }}</span>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Курсы -->
+      <h3>Повышение квалификации</h3>
+      <div class="courses-list">
+        {% for course in courses %}
+          <div class="course-item">
+            <strong>{{ course.year }}</strong>— 
+            <span class="course-desc">{{ course.desc }}</span>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

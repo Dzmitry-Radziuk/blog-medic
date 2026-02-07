@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Блог — Радюк Е.А.
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     Hero
+     ========================= -->
+<section class="hero" aria-label="Блог">
+  <div class="container hero-grid">
+
+    <div class="hero-text">
+      <h1>Блог</h1>
+      <p class="hero-subtitle">
+        Полезные статьи о неврологии, здоровье и реабилитации.<br>
+        Читайте последние публикации и будьте в курсе новостей.
+      </p>
+      <div class="hero-actions">
+        <a href="{% url 'contact' %}" class="btn-primary">Записаться</a>
+        <a href="{% url 'about' %}" class="btn-secondary">О враче</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="{% static 'images/blog-hero.png' %}" alt="Блог врача">
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     Список статей
+     ========================= -->
+<section class="blog-section">
+  <div class="container">
+
+    {% if posts %}
+      <div class="blog-grid">
+        {% for post in posts %}
+          <a href="{{ post.get_absolute_url }}" class="blog-card">
+
+            <div class="blog-card-image">
+              {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+              {% else %}
+                <img src="{% static 'images/blog-hero.png' %}" alt="{{ post.title }}">
+              {% endif %}
+            </div>
+
+            <div class="blog-card-body">
+              <p class="blog-card-date">{{ post.created_at|date:"d M Y" }} · 👁 {{ post.views_total }}</p>
+              <h3 class="blog-card-title">{{ post.title }}</h3>
+              <p class="blog-card-preview">{{ post.preview|truncatewords:25 }}</p>
+              <span class="blog-card-link">Читать →</span>
+            </div>
+
+          </a>
+        {% endfor %}
+      </div>
+
+      <!-- =========================
+           Премиум-пагинация
+           ========================= -->
+      {% if is_paginated %}
+        <div class="pagination-wrapper">
+
+          {% if page_obj.has_previous %}
+            <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">←</a>
+          {% endif %}
+
+          {% for num in paginator.page_range %}
+            {% if num == page_obj.number %}
+              <strong>{{ num }}</strong>
+            {% elif num <= 2 %}
+              <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > paginator.num_pages|add:"-2" %}
+              <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
+            {% elif num >= page_obj.number|add:"-1" and num <= page_obj.number|add:"1" %}
+              <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
+            {% elif num == 3 and page_obj.number > 4 %}
+              <span class="dots">…</span>
+            {% elif num == paginator.num_pages|add:"-2" and page_obj.number < paginator.num_pages|add:"-3" %}
+              <span class="dots">…</span>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">→</a>
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+    {% else %}
+      <p class="footer-muted text-center">Статей пока нет.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}
